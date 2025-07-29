@@ -82,7 +82,7 @@ jobs:
       runs-on: ubuntu-latest
       if: github.ref =='ref/heads/main' || github.ref =='ref/heads/develop'
       environment:
-        name: ${{github.ref =='ref/heads/main' || github.ref =='ref/heads/develop'}}
+        name: ${{github.ref =='ref/heads/main' && 'production' || 'development'}}
       steps:
         - name: Print env variables
           run: |
