@@ -80,9 +80,9 @@ jobs:
   deploy:
       needs: use-artifact
       runs-on: ubuntu-latest
-      if: github.ref == 'ref/heads/main' || github.ref == 'ref/heads/develop'
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
       environment:
-        name: ${{github.ref =='ref/heads/main' && 'production' || 'development'}}
+        name: ${{github.ref =='refs/heads/main' && 'production' || 'development'}}
       steps:
         - name: Print env variables
           run: |
