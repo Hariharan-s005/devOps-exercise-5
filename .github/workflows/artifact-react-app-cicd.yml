@@ -2,8 +2,6 @@ name: Artifact React App CI/CD
 
 on:
   push:
-    paths:
-      - "react-app/**"
     branches: [main, develop]
 
 jobs:
