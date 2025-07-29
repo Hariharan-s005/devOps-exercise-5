@@ -76,3 +76,16 @@ jobs:
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/react-artifact-demo
           docker tag react-artifact-demo:latest $IMAGE_NAME:latest
           docker push $IMAGE_NAME:latest
+  
+  deploy:
+      needs: use-artifact
+      runs-on: ubuntu-latest
+      if: github.ref =='ref/heads/main' || github.ref =='ref/heads/develop'
+      environment:
+        name: ${{github.ref =='ref/heads/main' || github.ref =='ref/heads/develop'}}
+      steps:
+        - name: Print env variables
+          run: |
+            echo "API_URL: ${{vars.API_URL}}"
+            echo "DB_NAME: ${{vars.DB_NAME}}"
+
